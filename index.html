@@ -11,10 +11,11 @@
         <h1>Pokedex</h1>
         <form id="pokemon-search-form">
             <input type="text" placeholder="Search Pokémon by name..." id="search-input">
+            <select class="type-filter">
+                <option value="">Filter by Type</option>
+            </select>
+            <button type="button" id="reset-button">Reset</button>
         </form>
-        <select class="type-filter">
-            <option value="">Filter by Type</option>
-        </select>
     </header>
     <main id="pokedex" class="pokedex-grid">
         

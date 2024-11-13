@@ -5,6 +5,7 @@ const selectedType = urlParams.get('type');
 const pokedexContainer = document.getElementById('pokedex');
 const searchForm = document.querySelector('#pokemon-search-form');
 const typeDropdown = document.querySelector('.type-filter');
+const resetButton = document.getElementById('reset-button');
 
 let pokemonList = [];
 let uniqueTypes = new Set();
@@ -48,6 +49,13 @@ typeDropdown.addEventListener('change', event => {
     updatePokedex(filteredPokemon);
 });
 
+
+resetButton.addEventListener('click', () => {
+    document.getElementById('search-input').value = '';
+    typeDropdown.value = '';
+    updatePokedex(pokemonList);
+});
+
 function updatePokedex(pokemonArray) {
     pokedexContainer.innerHTML = '';
     displayPokemon(pokemonArray);
@@ -66,7 +74,7 @@ function createPokemonCard(pokemon) {
     cardInner.classList.add("flip-card-inner");
     cardInner.id = pokemon.type;
 
-    
+
     const frontCard = document.createElement("div");
     frontCard.classList.add('front-pokemon-card');
 
@@ -87,7 +95,7 @@ function createPokemonCard(pokemon) {
 
     frontCard.append(frontImage, frontID, frontName, frontType);
 
-
+    
     const backCard = document.createElement("div");
     backCard.classList.add('back-pokemon-card');
 
@@ -120,5 +128,6 @@ function generateTypeOptions() {
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
 
 
